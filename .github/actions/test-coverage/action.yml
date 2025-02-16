@@ -1,0 +1,29 @@
+name: 'Flutter Test & Coverage'
+description: 'Runs Flutter tests and handles coverage reporting'
+
+inputs:
+  coverage-token:
+    description: 'Codecov token'
+    required: true
+  test-flags:
+    description: 'Additional flags for test command'
+    required: false
+    default: ''
+  coverage-flags:
+    description: 'Coverage report flags'
+    required: false
+    default: ''
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run Tests with Coverage
+      shell: bash
+      run: melos run coverage -- ${{ inputs.test-flags }}
+
+    - name: Upload Coverage Reports
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ inputs.coverage-token }}
+        flags: ${{ inputs.coverage-flags }}
+        fail_ci_if_error: true
