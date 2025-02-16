@@ -1,0 +1,70 @@
+name: zugantor_repo
+repository: https://github.com/your-username/zugantor_repo
+
+packages:
+  - apps/**
+  - packages/**
+  - features/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+  version:
+    linkToCommits: true
+    branch: main
+    workspaceChangelog: true
+
+scripts:
+  analyze:
+    run: |
+      melos exec -c 1 -- \
+        flutter analyze .
+    description: Run analyzer in all packages
+
+  format:
+    run: |
+      melos exec -c 1 -- \
+        dart format lib test
+    description: Format all packages
+    
+  test:
+    run: |
+      melos exec -c 1 --fail-fast -- \
+        flutter test --no-pub
+    description: Run all tests
+
+  generate:
+    run: |
+      melos exec --depends-on="build_runner" -c 1 --fail-fast -- \
+        dart run build_runner build --delete-conflicting-outputs
+    description: Generate code for all packages
+
+  generate:watch:
+    run: |
+      melos exec --depends-on="build_runner" -c 1 -- \
+        dart run build_runner watch --delete-conflicting-outputs
+    description: Watch and generate code for all packages
+
+  build:apps:
+    run: |
+      melos exec --depends-on="flutter" --scope="app_*" -- \
+        flutter build
+    description: Build all Flutter applications
+
+  build:packages:
+    run: |
+      melos exec --no-private --ignore="app_*" -- \
+        flutter pub get
+    description: Build all shared packages
+
+  dependencies:
+    run: |
+      melos exec -c 1 -- \
+        flutter pub get
+    description: Get dependencies for all packages
+
+  coverage:
+    run: |
+      melos exec --dir-exists="test" -- \
+        flutter test --coverage
+    description: Run tests with coverage

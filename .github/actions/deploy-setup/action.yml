@@ -1,0 +1,43 @@
+name: 'Flutter Deploy Setup'
+description: 'Common deployment setup for Flutter apps'
+
+inputs:
+  environment:
+    description: 'Target environment (dev/staging/prod)'
+    required: true
+  platform:
+    description: 'Target platform (android/ios)'
+    required: true
+  build-number:
+    description: 'Build number to use'
+    required: false
+    default: ${{ github.run_number }}
+  version-name:
+    description: 'Version name/number'
+    required: false
+    default: ''
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Build Config
+      shell: bash
+      run: |
+        VERSION_NAME="${{ inputs.version-name }}"
+        if [ -z "$VERSION_NAME" ]; then
+          VERSION_NAME=$(cat pubspec.yaml | grep '^version:' | cut -d' ' -f2 | cut -d'+' -f1)
+        fi
+        echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
+        echo "BUILD_NUMBER=${{ inputs.build-number }}" >> $GITHUB_ENV
+        echo "ENVIRONMENT=${{ inputs.environment }}" >> $GITHUB_ENV
+
+    - name: Generate Code
+      shell: bash
+      run: melos run generate
+
+    - name: Verify Environment
+      shell: bash
+      run: |
+        echo "Building for environment: ${{ inputs.environment }}"
+        echo "Platform: ${{ inputs.platform }}"
+        echo "Version: $VERSION_NAME+${{ inputs.build-number }}"

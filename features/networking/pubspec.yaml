@@ -1,0 +1,27 @@
+name: feature_networking
+description: "Shared networking module for Zugantor apps"
+publish_to: 'none'
+version: 0.0.1
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  zugantor_core:
+    path: ../../packages/zugantor_core
+  # Using core's dio instance for networking
+  dio: ^5.4.0
+  # For reactive programming
+  rxdart: ^0.27.7
+  # For caching
+  hive: ^2.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.7
+  hive_generator: ^2.0.1

@@ -1,0 +1,64 @@
+name: 'Flutter App Build'
+description: 'Builds Flutter apps with the specified configuration'
+
+inputs:
+  platform:
+    description: 'Target platform (android/ios)'
+    required: true
+  build-type:
+    description: 'Build type (debug/release/profile)'
+    required: false
+    default: 'release'
+  target-directory:
+    description: 'Directory containing the app to build'
+    required: true
+  environment:
+    description: 'Build environment'
+    required: true
+  extra-args:
+    description: 'Additional build arguments'
+    required: false
+    default: ''
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build App
+      shell: bash
+      run: |
+        cd ${{ inputs.target-directory }}
+        case "${{ inputs.platform }}" in
+          "android")
+            flutter build apk \
+              --${{ inputs.build-type }} \
+              --dart-define=ENV=${{ inputs.environment }} \
+              ${{ inputs.extra-args }}
+            ;;
+          "ios")
+            flutter build ios \
+              --${{ inputs.build-type }} \
+              --dart-define=ENV=${{ inputs.environment }} \
+              ${{ inputs.extra-args }}
+            ;;
+          *)
+            echo "Unsupported platform: ${{ inputs.platform }}"
+            exit 1
+            ;;
+        esac
+
+    - name: Collect Build Artifacts
+      shell: bash
+      run: |
+        ARTIFACTS_DIR="${{ inputs.target-directory }}/build/artifacts"
+        mkdir -p "$ARTIFACTS_DIR"
+        
+        case "${{ inputs.platform }}" in
+          "android")
+            cp ${{ inputs.target-directory }}/build/app/outputs/flutter-apk/app-${{ inputs.build-type }}.apk \
+               "$ARTIFACTS_DIR/"
+            ;;
+          "ios")
+            cp -r ${{ inputs.target-directory }}/build/ios/iphoneos/*.app \
+               "$ARTIFACTS_DIR/"
+            ;;
+        esac
