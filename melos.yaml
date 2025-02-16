@@ -1,5 +1,5 @@
 name: zugantor_repo
-repository: https://github.com/your-username/zugantor_repo
+repository: https://github.com/subhojit1stjuly/zugantor_repo
 
 packages:
   - apps/**
