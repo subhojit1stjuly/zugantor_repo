@@ -1,0 +1,41 @@
+name: 'iOS Build Setup'
+description: 'Sets up iOS certificates and provisioning profiles'
+
+inputs:
+  p12-certificate:
+    description: 'Base64 encoded P12 certificate'
+    required: true
+  p12-password:
+    description: 'P12 certificate password'
+    required: true
+  bundle-id:
+    description: 'Bundle identifier pattern'
+    required: true
+  appstore-issuer-id:
+    description: 'App Store Connect Issuer ID'
+    required: true
+  appstore-key-id:
+    description: 'App Store Connect API Key ID'
+    required: true
+  appstore-private-key:
+    description: 'App Store Connect API Private Key'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup iOS certificates
+      uses: apple-actions/import-codesigning-certs@v2
+      with: 
+        p12-file-base64: ${{ inputs.p12-certificate }}
+        p12-password: ${{ inputs.p12-password }}
+        keychain: signing_temp
+
+    - name: Install Provisioning Profiles
+      uses: apple-actions/download-provisioning-profiles@v1
+      with:
+        bundle-id: ${{ inputs.bundle-id }}
+        profile-type: "IOS_APP_STORE"
+        issuer-id: ${{ inputs.appstore-issuer-id }}
+        api-key-id: ${{ inputs.appstore-key-id }}
+        api-private-key: ${{ inputs.appstore-private-key }}

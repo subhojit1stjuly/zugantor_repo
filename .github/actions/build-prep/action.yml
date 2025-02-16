@@ -1,0 +1,42 @@
+name: 'Flutter Build Preparation'
+description: 'Prepares the Flutter project for building with code generation'
+
+inputs:
+  environment:
+    description: 'Environment to build for (dev/staging/prod)'
+    required: false
+    default: 'dev'
+  keystore-base64:
+    description: 'Base64 encoded Android keystore'
+    required: false
+  store-password:
+    description: 'Android keystore password'
+    required: false
+  key-password:
+    description: 'Android key password'
+    required: false
+  key-alias:
+    description: 'Android key alias'
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Generate Code
+      shell: bash
+      run: melos run generate
+      
+    - name: Setup Android Signing
+      if: inputs.keystore-base64
+      shell: bash
+      run: |
+        echo "${{ inputs.keystore-base64 }}" | base64 --decode > android-keystore.jks
+        echo "storeFile=../android-keystore.jks" > apps/app_zugantor/android/key.properties
+        echo "storePassword=${{ inputs.store-password }}" >> apps/app_zugantor/android/key.properties
+        echo "keyPassword=${{ inputs.key-password }}" >> apps/app_zugantor/android/key.properties
+        echo "keyAlias=${{ inputs.key-alias }}" >> apps/app_zugantor/android/key.properties
+        
+    - name: Set Environment Variables
+      shell: bash
+      run: |
+        echo "ENV=${{ inputs.environment }}" >> $GITHUB_ENV

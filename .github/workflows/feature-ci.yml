@@ -1,0 +1,42 @@
+name: Feature Build
+
+on:
+  pull_request:
+    paths:
+      - 'features/**'
+      - 'packages/**'
+
+jobs:
+  build-features:
+    name: Build and Test Features
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      
+      - name: Install Melos
+        run: dart pub global activate melos
+      
+      - name: Setup Melos
+        run: melos bootstrap
+      
+      - name: Generate Code
+        run: melos run generate
+      
+      - name: Run Feature Tests
+        run: |
+          melos exec --scope="feature_*" --dir-exists="test" -- \
+            "flutter test --coverage"
+      
+      - name: Upload Coverage
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          flags: features
