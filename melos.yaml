@@ -4,7 +4,6 @@ repository: https://github.com/subhojit1stjuly/zugantor_repo.git
 packages:
   - apps/**
   - packages/**
-  - features/**
 
 command:
   bootstrap:
