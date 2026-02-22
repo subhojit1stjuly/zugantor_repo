@@ -130,7 +130,8 @@ class AppTextInput extends StatelessWidget {
           borderSide: BorderSide(color: theme.colors.disabled ?? Colors.grey),
         ),
         filled: !enabled,
-        fillColor: enabled ? null : theme.colors.disabled?.withOpacity(0.1),
+        fillColor:
+            enabled ? null : theme.colors.disabled?.withValues(alpha: 0.1),
         contentPadding: EdgeInsets.symmetric(
           horizontal: theme.spacing.m,
           vertical: theme.spacing.m,

@@ -49,12 +49,12 @@ class AppDropdown<T> extends StatelessWidget {
           SizedBox(height: theme.spacing.s),
         ],
         DropdownButtonFormField<T>(
-          value: value,
+          initialValue: value,
           items: items
               .map(
                 (item) => DropdownMenuItem<T>(
                   value: item.value,
-                  child: Text(item.label),
+                  child: item.buildChild(context),
                 ),
               )
               .toList(),
@@ -80,7 +80,8 @@ class AppDropdown<T> extends StatelessWidget {
                   BorderSide(color: theme.colors.disabled ?? Colors.grey),
             ),
             filled: !enabled,
-            fillColor: enabled ? null : theme.colors.disabled?.withOpacity(0.1),
+            fillColor:
+                enabled ? null : theme.colors.disabled?.withValues(alpha: 0.1),
             contentPadding: EdgeInsets.symmetric(
               horizontal: theme.spacing.m,
               vertical: theme.spacing.m,
@@ -95,16 +96,75 @@ class AppDropdown<T> extends StatelessWidget {
 }
 
 /// A single item in a dropdown.
+///
+/// Supports three display modes:
+/// 1. Text only: `AppDropdownItem(value: 1, label: 'Option 1')`
+/// 2. Icon + Text: `AppDropdownItem(value: 2, label: 'Settings', icon: Icons.settings)`
+/// 3. Custom widget: `AppDropdownItem(value: 3, child: YourCustomWidget())`
 class AppDropdownItem<T> {
-  /// Creates a dropdown item.
+  /// Creates a dropdown item with text label (and optional icon).
   const AppDropdownItem({
     required this.value,
-    required this.label,
-  });
+    this.label,
+    this.icon,
+    this.child,
+  }) : assert(
+          label != null || child != null,
+          'Either label or child must be provided',
+        );
+
+  /// Creates a dropdown item with icon and text.
+  const AppDropdownItem.withIcon({
+    required this.value,
+    required String this.label,
+    required IconData this.icon,
+  }) : child = null;
+
+  /// Creates a dropdown item with a custom widget.
+  const AppDropdownItem.custom({
+    required this.value,
+    required Widget this.child,
+  })  : label = null,
+        icon = null;
 
   /// The value of this item.
   final T value;
 
   /// The label text for this item.
-  final String label;
+  ///
+  /// Required if [child] is not provided.
+  final String? label;
+
+  /// Optional icon to display before the label.
+  ///
+  /// Only used when [child] is null.
+  final IconData? icon;
+
+  /// Custom widget to display instead of the default text/icon layout.
+  ///
+  /// When provided, [label] and [icon] are ignored.
+  final Widget? child;
+
+  /// Builds the widget to display in the dropdown.
+  Widget buildChild(BuildContext context) {
+    // If custom child is provided, use it directly
+    if (child != null) {
+      return child!;
+    }
+
+    // If icon is provided, show icon + text
+    if (icon != null) {
+      final theme = ZDSTheme.of(context);
+      return Row(
+        children: [
+          Icon(icon, size: 20),
+          SizedBox(width: theme.spacing.s),
+          Text(label!),
+        ],
+      );
+    }
+
+    // Default: just text
+    return Text(label!);
+  }
 }

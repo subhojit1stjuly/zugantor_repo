@@ -16,8 +16,8 @@ class ZDSThemeFactory {
     final zdsColors = ZDSColors.light();
     final zdsTypography =
         ZDSTypography.fromTextTheme(ZDSTypography.defaultTextTheme);
-    final zdsSpacing = const ZDSSpacing();
-    final zdsShapes = const ZDSShapes();
+    const zdsSpacing = ZDSSpacing();
+    const zdsShapes = ZDSShapes();
 
     return ThemeData(
       brightness: Brightness.light,
@@ -45,8 +45,8 @@ class ZDSThemeFactory {
     final zdsColors = ZDSColors.dark();
     final zdsTypography =
         ZDSTypography.fromTextTheme(ZDSTypography.defaultTextTheme);
-    final zdsSpacing = const ZDSSpacing();
-    final zdsShapes = const ZDSShapes();
+    const zdsSpacing = ZDSSpacing();
+    const zdsShapes = ZDSShapes();
 
     return ThemeData(
       brightness: Brightness.dark,

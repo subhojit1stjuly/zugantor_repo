@@ -15,6 +15,7 @@ class AppDatePicker extends StatelessWidget {
     this.firstDate,
     this.lastDate,
     this.enabled = true,
+    this.calendarIcon = Icons.calendar_today,
   });
 
   /// The currently selected date.
@@ -37,6 +38,7 @@ class AppDatePicker extends StatelessWidget {
 
   /// Whether the date picker is enabled.
   final bool enabled;
+  final IconData calendarIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,7 @@ class AppDatePicker extends StatelessWidget {
             decoration: InputDecoration(
               hintText: hint,
               suffixIcon: Icon(
-                Icons.calendar_today,
+                calendarIcon,
                 color: enabled ? theme.colors.primary : theme.colors.disabled,
               ),
               border: OutlineInputBorder(
@@ -83,8 +85,9 @@ class AppDatePicker extends StatelessWidget {
                     BorderSide(color: theme.colors.disabled ?? Colors.grey),
               ),
               filled: !enabled,
-              fillColor:
-                  enabled ? null : theme.colors.disabled?.withOpacity(0.1),
+              fillColor: enabled
+                  ? null
+                  : theme.colors.disabled?.withValues(alpha: 0.1),
               contentPadding: EdgeInsets.symmetric(
                 horizontal: theme.spacing.m,
                 vertical: theme.spacing.m,

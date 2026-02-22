@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import '../theme/animations.dart';
 import '../theme/colors.dart';
 import '../theme/custom_theme.dart';
 import '../theme/shape.dart';
@@ -40,6 +41,9 @@ extension ZDSThemeExtension on BuildContext {
 
   /// Quick access to shape tokens.
   ZDSShapes get shapes => zdsTheme.shapes;
+
+  /// Quick access to animation tokens (durations and curves).
+  ZDSAnimations get animations => zdsTheme.animations;
 }
 
 /// Extension methods on [BuildContext] for responsive design.
@@ -134,7 +138,7 @@ extension MediaQueryExtension on BuildContext {
   double get devicePixelRatio => MediaQuery.of(this).devicePixelRatio;
 
   /// Get the current text scale factor.
-  double get textScaleFactor => MediaQuery.of(this).textScaleFactor;
+  double get textScaleFactor => MediaQuery.of(this).textScaler.scale(1.0);
 
   /// Get the current platform brightness.
   Brightness get brightness => MediaQuery.of(this).platformBrightness;

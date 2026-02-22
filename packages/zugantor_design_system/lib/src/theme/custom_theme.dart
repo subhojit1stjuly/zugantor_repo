@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'animations.dart';
 import 'colors.dart';
 import 'shape.dart';
 import 'spacing.dart';
@@ -7,8 +8,9 @@ import 'typography.dart';
 /// The custom theme for the ZDS design system.
 ///
 /// This class holds all the design tokens for the application, including
-/// colors, typography, spacing, and shapes. It is intended to be used
-/// with `ThemeData.extensions` to make it available throughout the widget tree.
+/// colors, typography, spacing, shapes, and animations. It is intended to be
+/// used with `ThemeData.extensions` to make it available throughout the
+/// widget tree.
 @immutable
 class ZDSTheme extends ThemeExtension<ZDSTheme> {
   const ZDSTheme({
@@ -16,6 +18,7 @@ class ZDSTheme extends ThemeExtension<ZDSTheme> {
     required this.typography,
     required this.spacing,
     required this.shapes,
+    this.animations = const ZDSAnimations(),
   });
 
   final ZDSColors colors;
@@ -23,18 +26,23 @@ class ZDSTheme extends ThemeExtension<ZDSTheme> {
   final ZDSSpacing spacing;
   final ZDSShapes shapes;
 
+  /// Motion tokens: durations and curves for all animated widgets.
+  final ZDSAnimations animations;
+
   @override
   ThemeExtension<ZDSTheme> copyWith({
     ZDSColors? colors,
     ZDSTypography? typography,
     ZDSSpacing? spacing,
     ZDSShapes? shapes,
+    ZDSAnimations? animations,
   }) {
     return ZDSTheme(
       colors: colors ?? this.colors,
       typography: typography ?? this.typography,
       spacing: spacing ?? this.spacing,
       shapes: shapes ?? this.shapes,
+      animations: animations ?? this.animations,
     );
   }
 
@@ -43,8 +51,6 @@ class ZDSTheme extends ThemeExtension<ZDSTheme> {
     ThemeExtension<ZDSTheme>? other,
     double t,
   ) {
-    // Basic lerp implementation. A more sophisticated implementation might
-    // lerp individual color and text style properties.
     return t < 0.5 ? this : other ?? this;
   }
 

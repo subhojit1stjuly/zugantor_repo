@@ -52,28 +52,83 @@ class ZDSTypography {
   }
 
   /// A default text theme using Google Fonts.
+  ///
+  /// Line heights follow the Material 3 type scale ratios.
+  /// Letter spacing values are in logical pixels (matching M3 spec).
   static TextTheme get defaultTextTheme {
     return TextTheme(
-      headlineLarge:
-          GoogleFonts.oswald(fontSize: 57, fontWeight: FontWeight.w400),
-      headlineMedium:
-          GoogleFonts.oswald(fontSize: 45, fontWeight: FontWeight.w400),
-      headlineSmall:
-          GoogleFonts.oswald(fontSize: 36, fontWeight: FontWeight.w400),
-      titleLarge: GoogleFonts.roboto(fontSize: 22, fontWeight: FontWeight.w500),
-      titleMedium:
-          GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w500),
-      titleSmall: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500),
-      bodyLarge:
-          GoogleFonts.openSans(fontSize: 16, fontWeight: FontWeight.w400),
-      bodyMedium:
-          GoogleFonts.openSans(fontSize: 14, fontWeight: FontWeight.w400),
-      bodySmall:
-          GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.w400),
-      labelLarge: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500),
-      labelMedium:
-          GoogleFonts.roboto(fontSize: 12, fontWeight: FontWeight.w500),
-      labelSmall: GoogleFonts.roboto(fontSize: 11, fontWeight: FontWeight.w500),
+      headlineLarge: GoogleFonts.oswald(
+        fontSize: 57,
+        fontWeight: FontWeight.w400,
+        height: 1.12,
+        letterSpacing: -0.25,
+      ),
+      headlineMedium: GoogleFonts.oswald(
+        fontSize: 45,
+        fontWeight: FontWeight.w400,
+        height: 1.16,
+        letterSpacing: 0,
+      ),
+      headlineSmall: GoogleFonts.oswald(
+        fontSize: 36,
+        fontWeight: FontWeight.w400,
+        height: 1.22,
+        letterSpacing: 0,
+      ),
+      titleLarge: GoogleFonts.roboto(
+        fontSize: 22,
+        fontWeight: FontWeight.w500,
+        height: 1.27,
+        letterSpacing: 0,
+      ),
+      titleMedium: GoogleFonts.roboto(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        height: 1.5,
+        letterSpacing: 0.15,
+      ),
+      titleSmall: GoogleFonts.roboto(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        height: 1.43,
+        letterSpacing: 0.1,
+      ),
+      bodyLarge: GoogleFonts.openSans(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.5,
+      ),
+      bodyMedium: GoogleFonts.openSans(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        height: 1.43,
+        letterSpacing: 0.25,
+      ),
+      bodySmall: GoogleFonts.openSans(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        height: 1.33,
+        letterSpacing: 0.4,
+      ),
+      labelLarge: GoogleFonts.roboto(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        height: 1.43,
+        letterSpacing: 0.1,
+      ),
+      labelMedium: GoogleFonts.roboto(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        height: 1.33,
+        letterSpacing: 0.5,
+      ),
+      labelSmall: GoogleFonts.roboto(
+        fontSize: 11,
+        fontWeight: FontWeight.w500,
+        height: 1.45,
+        letterSpacing: 0.5,
+      ),
     );
   }
 }

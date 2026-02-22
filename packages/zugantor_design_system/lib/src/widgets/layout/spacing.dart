@@ -6,37 +6,32 @@ import '../../theme/custom_theme.dart';
 /// This is more semantic than using `SizedBox(height: ...)` directly and
 /// ensures consistent spacing throughout the application.
 class VerticalSpacing extends StatelessWidget {
-  /// Creates a vertical spacing widget.
-  const VerticalSpacing(this.size, {super.key});
-
-  /// Creates an extra extra small vertical spacing (4px).
-  const VerticalSpacing.xxs({super.key}) : size = _SpacingSize.xxs;
+  const VerticalSpacing.xxs({super.key}) : _size = _SpacingSize.xxs;
 
   /// Creates an extra small vertical spacing (8px).
-  const VerticalSpacing.xs({super.key}) : size = _SpacingSize.xs;
+  const VerticalSpacing.xs({super.key}) : _size = _SpacingSize.xs;
 
   /// Creates a small vertical spacing (12px).
-  const VerticalSpacing.s({super.key}) : size = _SpacingSize.s;
+  const VerticalSpacing.s({super.key}) : _size = _SpacingSize.s;
 
   /// Creates a medium vertical spacing (16px).
-  const VerticalSpacing.m({super.key}) : size = _SpacingSize.m;
+  const VerticalSpacing.m({super.key}) : _size = _SpacingSize.m;
 
   /// Creates a large vertical spacing (24px).
-  const VerticalSpacing.l({super.key}) : size = _SpacingSize.l;
+  const VerticalSpacing.l({super.key}) : _size = _SpacingSize.l;
 
   /// Creates an extra large vertical spacing (32px).
-  const VerticalSpacing.xl({super.key}) : size = _SpacingSize.xl;
+  const VerticalSpacing.xl({super.key}) : _size = _SpacingSize.xl;
 
   /// Creates an extra extra large vertical spacing (48px).
-  const VerticalSpacing.xxl({super.key}) : size = _SpacingSize.xxl;
+  const VerticalSpacing.xxl({super.key}) : _size = _SpacingSize.xxl;
 
-  /// The size of the spacing.
-  final _SpacingSize size;
+  final _SpacingSize _size;
 
   @override
   Widget build(BuildContext context) {
     final theme = ZDSTheme.of(context);
-    final height = _getSpacingValue(theme, size);
+    final height = _getSpacingValue(theme, _size);
     return SizedBox(height: height);
   }
 }
@@ -46,37 +41,32 @@ class VerticalSpacing extends StatelessWidget {
 /// This is more semantic than using `SizedBox(width: ...)` directly and
 /// ensures consistent spacing throughout the application.
 class HorizontalSpacing extends StatelessWidget {
-  /// Creates a horizontal spacing widget.
-  const HorizontalSpacing(this.size, {super.key});
-
-  /// Creates an extra extra small horizontal spacing (4px).
-  const HorizontalSpacing.xxs({super.key}) : size = _SpacingSize.xxs;
+  const HorizontalSpacing.xxs({super.key}) : _size = _SpacingSize.xxs;
 
   /// Creates an extra small horizontal spacing (8px).
-  const HorizontalSpacing.xs({super.key}) : size = _SpacingSize.xs;
+  const HorizontalSpacing.xs({super.key}) : _size = _SpacingSize.xs;
 
   /// Creates a small horizontal spacing (12px).
-  const HorizontalSpacing.s({super.key}) : size = _SpacingSize.s;
+  const HorizontalSpacing.s({super.key}) : _size = _SpacingSize.s;
 
   /// Creates a medium horizontal spacing (16px).
-  const HorizontalSpacing.m({super.key}) : size = _SpacingSize.m;
+  const HorizontalSpacing.m({super.key}) : _size = _SpacingSize.m;
 
   /// Creates a large horizontal spacing (24px).
-  const HorizontalSpacing.l({super.key}) : size = _SpacingSize.l;
+  const HorizontalSpacing.l({super.key}) : _size = _SpacingSize.l;
 
   /// Creates an extra large horizontal spacing (32px).
-  const HorizontalSpacing.xl({super.key}) : size = _SpacingSize.xl;
+  const HorizontalSpacing.xl({super.key}) : _size = _SpacingSize.xl;
 
   /// Creates an extra extra large horizontal spacing (48px).
-  const HorizontalSpacing.xxl({super.key}) : size = _SpacingSize.xxl;
+  const HorizontalSpacing.xxl({super.key}) : _size = _SpacingSize.xxl;
 
-  /// The size of the spacing.
-  final _SpacingSize size;
+  final _SpacingSize _size;
 
   @override
   Widget build(BuildContext context) {
     final theme = ZDSTheme.of(context);
-    final width = _getSpacingValue(theme, size);
+    final width = _getSpacingValue(theme, _size);
     return SizedBox(width: width);
   }
 }

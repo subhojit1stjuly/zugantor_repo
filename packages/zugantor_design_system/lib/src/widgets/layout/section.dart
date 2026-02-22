@@ -89,7 +89,7 @@ class Section extends StatelessWidget {
                 Text(
                   subtitle!,
                   style: theme.typography.bodyMedium?.copyWith(
-                    color: theme.colors.onSurface?.withOpacity(0.7),
+                    color: theme.colors.onSurface?.withValues(alpha: 0.7),
                   ),
                 ),
               ],

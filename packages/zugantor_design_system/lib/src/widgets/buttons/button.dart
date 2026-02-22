@@ -41,6 +41,7 @@ class ZDSButton extends StatelessWidget {
     this.icon,
     this.tooltip,
     this.fullWidth = false,
+    this.isLoading = false,
   })  : assert(
           variant != ZDSButtonVariant.icon || icon != null,
           'Icon button requires an icon',
@@ -53,55 +54,45 @@ class ZDSButton extends StatelessWidget {
   /// Creates a primary button.
   const ZDSButton.primary({
     super.key,
-    required String label,
-    required VoidCallback? onPressed,
-    IconData? icon,
-    bool fullWidth = false,
+    required this.label,
+    required this.onPressed,
+    this.icon,
+    this.fullWidth = false,
+    this.isLoading = false,
   })  : variant = ZDSButtonVariant.primary,
-        label = label,
-        onPressed = onPressed,
-        icon = icon,
-        tooltip = null,
-        fullWidth = fullWidth;
+        tooltip = null;
 
   /// Creates a secondary button.
   const ZDSButton.secondary({
     super.key,
-    required String label,
-    required VoidCallback? onPressed,
-    IconData? icon,
-    bool fullWidth = false,
+    required this.label,
+    required this.onPressed,
+    this.icon,
+    this.fullWidth = false,
+    this.isLoading = false,
   })  : variant = ZDSButtonVariant.secondary,
-        label = label,
-        onPressed = onPressed,
-        icon = icon,
-        tooltip = null,
-        fullWidth = fullWidth;
+        tooltip = null;
 
   /// Creates a text button.
   const ZDSButton.text({
     super.key,
-    required String label,
-    required VoidCallback? onPressed,
-    IconData? icon,
+    required this.label,
+    required this.onPressed,
+    this.icon,
+    this.isLoading = false,
   })  : variant = ZDSButtonVariant.text,
-        label = label,
-        onPressed = onPressed,
-        icon = icon,
         tooltip = null,
         fullWidth = false;
 
   /// Creates an icon button.
   const ZDSButton.icon({
     super.key,
-    required IconData icon,
-    required VoidCallback? onPressed,
-    String? tooltip,
+    required this.icon,
+    required this.onPressed,
+    this.tooltip,
+    this.isLoading = false,
   })  : variant = ZDSButtonVariant.icon,
         label = null,
-        onPressed = onPressed,
-        icon = icon,
-        tooltip = tooltip,
         fullWidth = false;
 
   /// The button variant type.
@@ -121,6 +112,9 @@ class ZDSButton extends StatelessWidget {
 
   /// Whether the button should expand to full width.
   final bool fullWidth;
+
+  /// When true, the button shows a loading spinner and ignores taps.
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +146,7 @@ class ZDSButton extends StatelessWidget {
 
   Widget _buildPrimaryButton(BuildContext context, ZDSTheme theme) {
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: isLoading ? null : onPressed,
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.resolveWith<Color?>(
           (states) => theme.colors.primary,
@@ -171,26 +165,28 @@ class ZDSButton extends StatelessWidget {
         ),
         textStyle: WidgetStateProperty.all(theme.typography.labelLarge),
       ),
-      child: icon != null
-          ? Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(icon, size: 18),
-                SizedBox(width: theme.spacing.xs),
-                Text(label!),
-              ],
-            )
-          : Text(label!),
+      child: isLoading
+          ? _LoadingIndicator(color: theme.colors.onPrimary)
+          : icon != null
+              ? Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(icon, size: 18),
+                    SizedBox(width: theme.spacing.xs),
+                    Text(label!),
+                  ],
+                )
+              : Text(label!),
     );
   }
 
   Widget _buildSecondaryButton(BuildContext context, ZDSTheme theme) {
     return OutlinedButton(
-      onPressed: onPressed,
+      onPressed: isLoading ? null : onPressed,
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.resolveWith<Color?>(
           (states) => states.contains(WidgetState.pressed)
-              ? theme.colors.secondary?.withOpacity(0.1)
+              ? theme.colors.secondary?.withValues(alpha: 0.1)
               : theme.colors.surface,
         ),
         foregroundColor: WidgetStateProperty.resolveWith<Color?>(
@@ -210,22 +206,24 @@ class ZDSButton extends StatelessWidget {
         ),
         textStyle: WidgetStateProperty.all(theme.typography.labelLarge),
       ),
-      child: icon != null
-          ? Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(icon, size: 18),
-                SizedBox(width: theme.spacing.xs),
-                Text(label!),
-              ],
-            )
-          : Text(label!),
+      child: isLoading
+          ? _LoadingIndicator(color: theme.colors.secondary)
+          : icon != null
+              ? Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(icon, size: 18),
+                    SizedBox(width: theme.spacing.xs),
+                    Text(label!),
+                  ],
+                )
+              : Text(label!),
     );
   }
 
   Widget _buildTextButton(BuildContext context, ZDSTheme theme) {
     return TextButton(
-      onPressed: onPressed,
+      onPressed: isLoading ? null : onPressed,
       style: ButtonStyle(
         foregroundColor: WidgetStateProperty.resolveWith<Color?>(
           (states) => states.contains(WidgetState.disabled)
@@ -233,7 +231,7 @@ class ZDSButton extends StatelessWidget {
               : theme.colors.primary,
         ),
         overlayColor: WidgetStateProperty.all(
-          theme.colors.primary?.withOpacity(0.1),
+          theme.colors.primary?.withValues(alpha: 0.1),
         ),
         padding: WidgetStateProperty.all(
           EdgeInsets.symmetric(
@@ -258,7 +256,7 @@ class ZDSButton extends StatelessWidget {
 
   Widget _buildIconButton(BuildContext context, ZDSTheme theme) {
     return IconButton(
-      onPressed: onPressed,
+      onPressed: isLoading ? null : onPressed,
       tooltip: tooltip,
       style: ButtonStyle(
         foregroundColor: WidgetStateProperty.resolveWith<Color?>(
@@ -267,13 +265,34 @@ class ZDSButton extends StatelessWidget {
               : theme.colors.primary,
         ),
         overlayColor: WidgetStateProperty.all(
-          theme.colors.primary?.withOpacity(0.1),
+          theme.colors.primary?.withValues(alpha: 0.1),
         ),
         padding: WidgetStateProperty.all(
           EdgeInsets.all(theme.spacing.s),
         ),
       ),
       icon: Icon(icon!),
+    );
+  }
+}
+
+/// A compact circular progress indicator sized to fit inside a button.
+class _LoadingIndicator extends StatelessWidget {
+  const _LoadingIndicator({this.color});
+
+  final Color? color;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 18,
+      height: 18,
+      child: CircularProgressIndicator(
+        strokeWidth: 2,
+        valueColor: AlwaysStoppedAnimation<Color>(
+          color ?? Colors.white,
+        ),
+      ),
     );
   }
 }

@@ -6,8 +6,6 @@ packages:
   - packages/**
 
 command:
-  bootstrap:
-    usePubspecOverrides: true
   version:
     linkToCommits: true
     branch: main

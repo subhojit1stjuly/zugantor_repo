@@ -33,10 +33,10 @@ class AppSwitch extends StatelessWidget {
     final switchWidget = Switch(
       value: value,
       onChanged: enabled ? onChanged : null,
-      activeColor: theme.colors.primary,
-      activeTrackColor: theme.colors.primary?.withOpacity(0.5),
+      activeThumbColor: theme.colors.primary,
+      activeTrackColor: theme.colors.primary?.withValues(alpha: 0.5),
       inactiveThumbColor: theme.colors.disabled,
-      inactiveTrackColor: theme.colors.disabled?.withOpacity(0.3),
+      inactiveTrackColor: theme.colors.disabled?.withValues(alpha: 0.3),
     );
 
     if (label == null) {

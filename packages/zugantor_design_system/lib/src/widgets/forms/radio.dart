@@ -36,9 +36,16 @@ class AppRadio<T> extends StatelessWidget {
 
     final radio = Radio<T>(
       value: value,
+      // ignore: deprecated_member_use
       groupValue: groupValue,
+      // ignore: deprecated_member_use
       onChanged: enabled ? onChanged : null,
-      activeColor: theme.colors.primary,
+      fillColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return theme.colors.primary;
+        }
+        return theme.colors.border;
+      }),
     );
 
     if (label == null) {
