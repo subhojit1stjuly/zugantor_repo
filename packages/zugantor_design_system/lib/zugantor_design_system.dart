@@ -31,3 +31,13 @@ export 'src/widgets/layout/card.dart';
 export 'src/widgets/layout/padded_container.dart';
 export 'src/widgets/layout/section.dart';
 export 'src/widgets/layout/spacing.dart';
+
+// Feedback
+export 'src/widgets/feedback/alert.dart';
+
+// Navigation
+export 'src/widgets/navigation/accordion.dart';
+export 'src/widgets/navigation/tabs.dart';
+
+// Display
+export 'src/widgets/display/badge.dart';
