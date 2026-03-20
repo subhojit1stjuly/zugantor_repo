@@ -47,7 +47,7 @@ class AccordionItem {
 /// ```
 class Accordion extends StatefulWidget {
   /// Creates an accordion.
-  const Accordion({
+  Accordion({
     super.key,
     required this.items,
     this.allowMultiple = false,
@@ -70,8 +70,7 @@ class _AccordionState extends State<Accordion> {
   @override
   void initState() {
     super.initState();
-    _expanded =
-        widget.items.map((item) => item.initiallyExpanded).toList();
+    _expanded = widget.items.map((item) => item.initiallyExpanded).toList();
   }
 
   void _toggle(int index) {
@@ -161,8 +160,8 @@ class _AccordionPanel extends StatelessWidget {
                           Text(
                             item.subtitle!,
                             style: theme.typography.bodySmall?.copyWith(
-                              color:
-                                  theme.colors.onSurface?.withOpacity(0.6),
+                              color: theme.colors.onSurface
+                                  ?.withValues(alpha: 0.6),
                             ),
                           ),
                         ],
