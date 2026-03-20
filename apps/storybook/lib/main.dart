@@ -349,6 +349,154 @@ class _StorybookHomeState extends State<StorybookHome> {
 
             SizedBox(height: context.spacing.xl),
 
+            // Alert Section
+            Text('Alerts', style: context.typography.titleLarge),
+            SizedBox(height: context.spacing.m),
+            const Alert.info(
+              title: 'Informational',
+              message:
+                  'Here is some useful context about the current state.',
+            ),
+            SizedBox(height: context.spacing.s),
+            const Alert.success(
+              title: 'Profile saved',
+              message: 'Your changes have been saved successfully.',
+            ),
+            SizedBox(height: context.spacing.s),
+            const Alert.warning(
+              title: 'Unsaved changes',
+              message: 'You have unsaved changes. Please save before leaving.',
+            ),
+            SizedBox(height: context.spacing.s),
+            Alert.error(
+              title: 'Something went wrong',
+              message: 'An unexpected error occurred. Please try again.',
+              onClose: () => _showSnackBar(context, 'Alert dismissed'),
+            ),
+
+            SizedBox(height: context.spacing.xl),
+
+            // Accordion Section
+            Text('Accordion', style: context.typography.titleLarge),
+            SizedBox(height: context.spacing.m),
+            Accordion(
+              items: [
+                AccordionItem(
+                  title: 'What is the Zugantor Design System?',
+                  subtitle: 'Overview',
+                  initiallyExpanded: true,
+                  content: Text(
+                    'ZDS is a versatile, themeable Flutter design system '
+                    'aligned with standard component patterns from '
+                    'component.gallery.',
+                    style: context.typography.bodyMedium,
+                  ),
+                ),
+                AccordionItem(
+                  title: 'Which components are available?',
+                  content: Text(
+                    'Buttons, Cards, Form fields, Tabs, Alerts, Badges, '
+                    'and Accordions – with more on the way.',
+                    style: context.typography.bodyMedium,
+                  ),
+                ),
+                AccordionItem(
+                  title: 'How do I contribute?',
+                  content: Text(
+                    'Open a pull request on GitHub and follow the '
+                    'contribution guidelines in the repository.',
+                    style: context.typography.bodyMedium,
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: context.spacing.xl),
+
+            // Tabs Section
+            Text('Tabs', style: context.typography.titleLarge),
+            SizedBox(height: context.spacing.m),
+            ZDSTabs(
+              tabs: [
+                ZDSTabItem(
+                  label: 'Overview',
+                  icon: Icons.info_outline,
+                  content: Padding(
+                    padding: EdgeInsets.only(top: context.spacing.m),
+                    child: Text(
+                      'This is the overview tab content.',
+                      style: context.typography.bodyMedium,
+                    ),
+                  ),
+                ),
+                ZDSTabItem(
+                  label: 'Details',
+                  icon: Icons.list_alt,
+                  content: Padding(
+                    padding: EdgeInsets.only(top: context.spacing.m),
+                    child: Text(
+                      'Detailed information is shown here.',
+                      style: context.typography.bodyMedium,
+                    ),
+                  ),
+                ),
+                ZDSTabItem(
+                  label: 'Disabled',
+                  enabled: false,
+                  content: const SizedBox.shrink(),
+                ),
+              ],
+            ),
+
+            SizedBox(height: context.spacing.xl),
+
+            // Badge Section
+            Text('Badges', style: context.typography.titleLarge),
+            SizedBox(height: context.spacing.m),
+            Wrap(
+              spacing: context.spacing.m,
+              runSpacing: context.spacing.m,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                const ZDSBadge(label: 'Filled'),
+                const ZDSBadge(
+                  label: 'Outlined',
+                  variant: BadgeVariant.outlined,
+                ),
+                const ZDSBadge(label: 'Soft', variant: BadgeVariant.soft),
+                ZDSBadge(
+                  label: 'Success',
+                  color: context.colors.success,
+                ),
+                ZDSBadge(
+                  label: 'Warning',
+                  color: context.colors.warning,
+                ),
+                ZDSBadge(
+                  label: 'Error',
+                  color: context.colors.error,
+                ),
+                ZDSBadge.overlay(
+                  count: 5,
+                  child: Icon(
+                    Icons.notifications,
+                    size: 28,
+                    color: context.colors.onSurface,
+                  ),
+                ),
+                ZDSBadge.overlay(
+                  count: 120,
+                  child: Icon(
+                    Icons.shopping_cart,
+                    size: 28,
+                    color: context.colors.onSurface,
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: context.spacing.xl),
+
             // Layout Helpers Section
             Text('Layout Helpers', style: context.typography.titleLarge),
             SizedBox(height: context.spacing.m),
