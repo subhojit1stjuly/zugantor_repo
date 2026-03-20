@@ -43,48 +43,72 @@ class Alert extends StatelessWidget {
         );
 
   /// Creates an informational alert.
+  ///
+  /// At least one of [title] or [message] must be non-null.
   const Alert.info({
     super.key,
     String? title,
     String? message,
     VoidCallback? onClose,
-  })  : variant = AlertVariant.info,
+  })  : assert(
+          title != null || message != null,
+          'Alert.info must have a title or a message.',
+        ),
+        variant = AlertVariant.info,
         title = title,
         message = message,
         onClose = onClose,
         icon = null;
 
   /// Creates a success alert.
+  ///
+  /// At least one of [title] or [message] must be non-null.
   const Alert.success({
     super.key,
     String? title,
     String? message,
     VoidCallback? onClose,
-  })  : variant = AlertVariant.success,
+  })  : assert(
+          title != null || message != null,
+          'Alert.success must have a title or a message.',
+        ),
+        variant = AlertVariant.success,
         title = title,
         message = message,
         onClose = onClose,
         icon = null;
 
   /// Creates a warning alert.
+  ///
+  /// At least one of [title] or [message] must be non-null.
   const Alert.warning({
     super.key,
     String? title,
     String? message,
     VoidCallback? onClose,
-  })  : variant = AlertVariant.warning,
+  })  : assert(
+          title != null || message != null,
+          'Alert.warning must have a title or a message.',
+        ),
+        variant = AlertVariant.warning,
         title = title,
         message = message,
         onClose = onClose,
         icon = null;
 
   /// Creates an error alert.
+  ///
+  /// At least one of [title] or [message] must be non-null.
   const Alert.error({
     super.key,
     String? title,
     String? message,
     VoidCallback? onClose,
-  })  : variant = AlertVariant.error,
+  })  : assert(
+          title != null || message != null,
+          'Alert.error must have a title or a message.',
+        ),
+        variant = AlertVariant.error,
         title = title,
         message = message,
         onClose = onClose,

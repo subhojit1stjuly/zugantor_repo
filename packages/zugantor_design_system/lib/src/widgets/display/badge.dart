@@ -61,6 +61,7 @@ class ZDSBadge extends StatelessWidget {
 
     final label = count > maxCount ? '$maxCount+' : '$count';
     return Stack(
+      key: key,
       clipBehavior: Clip.none,
       children: [
         child,
