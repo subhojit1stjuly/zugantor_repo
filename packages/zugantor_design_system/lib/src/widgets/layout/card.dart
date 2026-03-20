@@ -1,19 +1,19 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../theme/custom_theme.dart';
 
 /// Elevation variants for cards.
-enum CardElevation { low, medium, high }
+enum ZDSCardElevation { low, medium, high }
 
 /// A theme-aware card component for the ZDS design system.
 ///
 /// This card provides consistent elevation, padding, and styling
 /// for grouping related content.
-class AppCard extends StatelessWidget {
+class ZDSCard extends StatelessWidget {
   /// Creates a card.
-  const AppCard({
+  const ZDSCard({
     super.key,
     required this.child,
-    this.elevation = CardElevation.low,
+    this.elevation = ZDSCardElevation.low,
     this.padding,
     this.margin,
     this.onTap,
@@ -23,7 +23,7 @@ class AppCard extends StatelessWidget {
   final Widget child;
 
   /// The elevation level of the card.
-  final CardElevation elevation;
+  final ZDSCardElevation elevation;
 
   /// Optional padding inside the card.
   final EdgeInsetsGeometry? padding;
@@ -40,13 +40,13 @@ class AppCard extends StatelessWidget {
 
     double shadowElevation;
     switch (elevation) {
-      case CardElevation.low:
+      case ZDSCardElevation.low:
         shadowElevation = 2;
         break;
-      case CardElevation.medium:
+      case ZDSCardElevation.medium:
         shadowElevation = 4;
         break;
-      case CardElevation.high:
+      case ZDSCardElevation.high:
         shadowElevation = 8;
         break;
     }

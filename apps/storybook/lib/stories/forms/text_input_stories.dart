@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zugantor_design_system/zugantor_design_system.dart';
 
-/// Use-cases for [AppTextInput].
+/// Use-cases for [ZDSTextInput].
 final List<WidgetbookUseCase> textInputStories = [
   WidgetbookUseCase(name: 'Default', builder: _default),
   WidgetbookUseCase(name: 'All States', builder: _allStates),
@@ -35,15 +35,15 @@ Widget _default(BuildContext context) {
   final enabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
 
   final states = [
-    TextInputState.normal,
-    TextInputState.success,
-    TextInputState.warning,
-    TextInputState.error,
+    ZDSTextInputState.normal,
+    ZDSTextInputState.success,
+    ZDSTextInputState.warning,
+    ZDSTextInputState.error,
   ];
 
   return SizedBox(
     width: 320,
-    child: AppTextInput(
+    child: ZDSTextInput(
       label: label,
       hint: hint,
       helperText: helperText,
@@ -61,35 +61,35 @@ Widget _allStates(BuildContext context) {
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        AppTextInput(
+        ZDSTextInput(
           label: 'Normal',
           hint: 'Enter text',
-          state: TextInputState.normal,
+          state: ZDSTextInputState.normal,
           onChanged: (_) {},
         ),
         const SizedBox(height: 12),
-        AppTextInput(
+        ZDSTextInput(
           label: 'Success',
           hint: 'Looks good',
-          state: TextInputState.success,
+          state: ZDSTextInputState.success,
           onChanged: (_) {},
         ),
         const SizedBox(height: 12),
-        AppTextInput(
+        ZDSTextInput(
           label: 'Warning',
           hint: 'Double check this',
-          state: TextInputState.warning,
+          state: ZDSTextInputState.warning,
           onChanged: (_) {},
         ),
         const SizedBox(height: 12),
-        AppTextInput(
+        ZDSTextInput(
           label: 'Error',
           errorText: 'This field is required',
-          state: TextInputState.error,
+          state: ZDSTextInputState.error,
           onChanged: (_) {},
         ),
         const SizedBox(height: 12),
-        AppTextInput(
+        ZDSTextInput(
           label: 'Disabled',
           hint: 'Not editable',
           enabled: false,

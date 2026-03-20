@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zugantor_design_system/zugantor_design_system.dart';
 
-/// Use-cases for [AppRadioGroup].
+/// Use-cases for [ZDSRadioGroup].
 final List<WidgetbookUseCase> radioStories = [
   WidgetbookUseCase(name: 'Shipping Method', builder: _shippingMethod),
   WidgetbookUseCase(name: 'Horizontal', builder: _horizontal),
 ];
 
 const _shippingItems = [
-  AppRadioItem(value: 'standard', label: 'Standard (3–5 days)'),
-  AppRadioItem(value: 'express', label: 'Express (1–2 days)'),
-  AppRadioItem(value: 'overnight', label: 'Overnight'),
+  ZDSRadioItem(value: 'standard', label: 'Standard (3–5 days)'),
+  ZDSRadioItem(value: 'express', label: 'Express (1–2 days)'),
+  ZDSRadioItem(value: 'overnight', label: 'Overnight'),
 ];
 
 Widget _shippingMethod(BuildContext context) {
@@ -28,10 +28,10 @@ Widget _horizontal(BuildContext context) {
   return _RadioDemo(
     label: 'Size',
     items: const [
-      AppRadioItem(value: 's', label: 'S'),
-      AppRadioItem(value: 'm', label: 'M'),
-      AppRadioItem(value: 'l', label: 'L'),
-      AppRadioItem(value: 'xl', label: 'XL'),
+      ZDSRadioItem(value: 's', label: 'S'),
+      ZDSRadioItem(value: 'm', label: 'M'),
+      ZDSRadioItem(value: 'l', label: 'L'),
+      ZDSRadioItem(value: 'xl', label: 'XL'),
     ],
     direction: Axis.horizontal,
   );
@@ -46,7 +46,7 @@ class _RadioDemo extends StatefulWidget {
   });
 
   final String label;
-  final List<AppRadioItem<String>> items;
+  final List<ZDSRadioItem<String>> items;
   final bool enabled;
   final Axis direction;
 
@@ -61,7 +61,7 @@ class _RadioDemoState extends State<_RadioDemo> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: AppRadioGroup<String>(
+      child: ZDSRadioGroup<String>(
         value: _value,
         onChanged: widget.enabled ? (v) => setState(() => _value = v) : null,
         label: widget.label,

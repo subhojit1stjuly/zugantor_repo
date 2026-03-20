@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../theme/custom_theme.dart';
 
 /// A theme-aware switch component for the ZDS design system.
 ///
 /// This switch provides consistent styling and behavior across the application.
-class AppSwitch extends StatelessWidget {
+class ZDSSwitch extends StatelessWidget {
   /// Creates a switch.
-  const AppSwitch({
+  const ZDSSwitch({
     super.key,
     required this.value,
     required this.onChanged,

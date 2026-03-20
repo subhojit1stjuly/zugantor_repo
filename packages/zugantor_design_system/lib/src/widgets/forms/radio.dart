@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../theme/custom_theme.dart';
 
 /// A theme-aware radio button component for the ZDS design system.
 ///
 /// This radio button provides consistent styling and behavior across the application.
-class AppRadio<T> extends StatelessWidget {
+class ZDSRadio<T> extends StatelessWidget {
   /// Creates a radio button.
-  const AppRadio({
+  const ZDSRadio({
     super.key,
     required this.value,
     required this.groupValue,
@@ -75,9 +75,9 @@ class AppRadio<T> extends StatelessWidget {
 }
 
 /// A group of radio buttons with a common label.
-class AppRadioGroup<T> extends StatelessWidget {
+class ZDSRadioGroup<T> extends StatelessWidget {
   /// Creates a radio button group.
-  const AppRadioGroup({
+  const ZDSRadioGroup({
     super.key,
     required this.value,
     required this.onChanged,
@@ -94,7 +94,7 @@ class AppRadioGroup<T> extends StatelessWidget {
   final ValueChanged<T?>? onChanged;
 
   /// The radio button items.
-  final List<AppRadioItem<T>> items;
+  final List<ZDSRadioItem<T>> items;
 
   /// Optional label for the group.
   final String? label;
@@ -111,7 +111,7 @@ class AppRadioGroup<T> extends StatelessWidget {
 
     final radios = items
         .map(
-          (item) => AppRadio<T>(
+          (item) => ZDSRadio<T>(
             value: item.value,
             groupValue: value,
             onChanged: onChanged,
@@ -147,9 +147,9 @@ class AppRadioGroup<T> extends StatelessWidget {
 }
 
 /// A single item in a radio button group.
-class AppRadioItem<T> {
+class ZDSRadioItem<T> {
   /// Creates a radio button item.
-  const AppRadioItem({
+  const ZDSRadioItem({
     required this.value,
     required this.label,
     this.enabled = true,

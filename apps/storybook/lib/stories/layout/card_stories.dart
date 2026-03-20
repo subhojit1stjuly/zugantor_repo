@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zugantor_design_system/zugantor_design_system.dart';
 
-/// Use-cases for [AppCard].
+/// Use-cases for [ZDSCard].
 final List<WidgetbookUseCase> cardStories = [
   WidgetbookUseCase(name: 'Default', builder: _default),
   WidgetbookUseCase(name: 'All Elevations', builder: _allElevations),
@@ -22,12 +22,12 @@ Widget _default(BuildContext context) {
   );
 
   final elevations = [
-    CardElevation.low,
-    CardElevation.medium,
-    CardElevation.high,
+    ZDSCardElevation.low,
+    ZDSCardElevation.medium,
+    ZDSCardElevation.high,
   ];
 
-  return AppCard(
+  return ZDSCard(
     elevation: elevations[elevationIndex],
     onTap: tappable ? () {} : null,
     child: const _SampleCardContent(
@@ -43,18 +43,18 @@ Widget _allElevations(BuildContext context) {
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        AppCard(
-          elevation: CardElevation.low,
+        ZDSCard(
+          elevation: ZDSCardElevation.low,
           child: const _SampleCardContent(title: 'Low elevation'),
         ),
         const SizedBox(height: 16),
-        AppCard(
-          elevation: CardElevation.medium,
+        ZDSCard(
+          elevation: ZDSCardElevation.medium,
           child: const _SampleCardContent(title: 'Medium elevation'),
         ),
         const SizedBox(height: 16),
-        AppCard(
-          elevation: CardElevation.high,
+        ZDSCard(
+          elevation: ZDSCardElevation.high,
           child: const _SampleCardContent(title: 'High elevation'),
         ),
       ],

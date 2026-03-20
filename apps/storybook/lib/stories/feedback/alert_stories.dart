@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zugantor_design_system/zugantor_design_system.dart';
 
-/// Use-cases for [Alert].
+/// Use-cases for [ZDSAlert].
 final List<WidgetbookUseCase> alertStories = [
   WidgetbookUseCase(name: 'Default', builder: _default),
   WidgetbookUseCase(name: 'All Variants', builder: _allVariants),
@@ -19,23 +19,23 @@ Widget _default(BuildContext context) {
   );
   final title = context.knobs.string(
     label: 'Title',
-    initialValue: 'Alert title',
+    initialValue: 'ZDSAlert title',
   );
   final message = context.knobs.string(
     label: 'Message',
-    initialValue: 'This is the alert message body.',
+    initialValue: 'This is the ZDSAlert message body.',
   );
 
   final variants = [
-    AlertVariant.info,
-    AlertVariant.success,
-    AlertVariant.warning,
-    AlertVariant.error,
+    ZDSAlertVariant.info,
+    ZDSAlertVariant.success,
+    ZDSAlertVariant.warning,
+    ZDSAlertVariant.error,
   ];
 
   return Padding(
     padding: const EdgeInsets.all(16),
-    child: Alert(
+    child: ZDSAlert(
       variant: variants[variantIndex],
       title: title,
       message: message,
@@ -49,19 +49,19 @@ Widget _allVariants(BuildContext context) {
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Alert.info(title: 'Info', message: 'Here is some helpful information.'),
+        ZDSAlert.info(title: 'Info', message: 'Here is some helpful information.'),
         SizedBox(height: 8),
-        Alert.success(
+        ZDSAlert.success(
           title: 'Success',
           message: 'Your changes have been saved successfully.',
         ),
         SizedBox(height: 8),
-        Alert.warning(
+        ZDSAlert.warning(
           title: 'Warning',
           message: 'Please review before continuing.',
         ),
         SizedBox(height: 8),
-        Alert.error(
+        ZDSAlert.error(
           title: 'Error',
           message: 'Something went wrong. Please try again.',
         ),
@@ -88,14 +88,14 @@ class _DismissibleAlertState extends State<_DismissibleAlert> {
       return Center(
         child: TextButton(
           onPressed: () => setState(() => _visible = true),
-          child: const Text('Show alert again'),
+          child: const Text('Show ZDSAlert again'),
         ),
       );
     }
 
-    return Alert.info(
-      title: 'Dismissible alert',
-      message: 'Tap the close button to dismiss this alert.',
+    return ZDSAlert.info(
+      title: 'Dismissible ZDSAlert',
+      message: 'Tap the close button to dismiss this ZDSAlert.',
       onClose: () => setState(() => _visible = false),
     );
   }

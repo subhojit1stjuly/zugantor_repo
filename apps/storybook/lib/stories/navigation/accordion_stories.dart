@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zugantor_design_system/zugantor_design_system.dart';
 
-/// Use-cases for [Accordion].
+/// Use-cases for [ZDSAccordion].
 final List<WidgetbookUseCase> accordionStories = [
   WidgetbookUseCase(name: 'FAQ', builder: _faq),
   WidgetbookUseCase(name: 'Allow Multiple', builder: _allowMultiple),
@@ -16,10 +16,10 @@ Widget _faq(BuildContext context) {
 
   return Padding(
     padding: const EdgeInsets.all(16),
-    child: Accordion(
+    child: ZDSAccordion(
       allowMultiple: allowMultiple,
       items: [
-        AccordionItem(
+        ZDSAccordionItem(
           title: 'What is the Zugantor Design System?',
           subtitle: 'Overview',
           initiallyExpanded: true,
@@ -29,14 +29,14 @@ Widget _faq(BuildContext context) {
             style: ZDSTheme.of(context).typography.bodyMedium,
           ),
         ),
-        AccordionItem(
+        ZDSAccordionItem(
           title: 'Which platforms are supported?',
           content: Text(
             'ZDS supports iOS, Android, Web, macOS, Windows, and Linux.',
             style: ZDSTheme.of(context).typography.bodyMedium,
           ),
         ),
-        AccordionItem(
+        ZDSAccordionItem(
           title: 'How do I contribute?',
           content: Text(
             'Open a pull request on GitHub and follow the contribution '
@@ -52,10 +52,10 @@ Widget _faq(BuildContext context) {
 Widget _allowMultiple(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(16),
-    child: Accordion(
+    child: ZDSAccordion(
       allowMultiple: true,
       items: [
-        AccordionItem(
+        ZDSAccordionItem(
           title: 'Section A',
           initiallyExpanded: true,
           content: Text(
@@ -63,7 +63,7 @@ Widget _allowMultiple(BuildContext context) {
             style: ZDSTheme.of(context).typography.bodyMedium,
           ),
         ),
-        AccordionItem(
+        ZDSAccordionItem(
           title: 'Section B',
           initiallyExpanded: true,
           content: Text(
@@ -71,7 +71,7 @@ Widget _allowMultiple(BuildContext context) {
             style: ZDSTheme.of(context).typography.bodyMedium,
           ),
         ),
-        AccordionItem(
+        ZDSAccordionItem(
           title: 'Section C',
           content: Text(
             'Content for Section C.',

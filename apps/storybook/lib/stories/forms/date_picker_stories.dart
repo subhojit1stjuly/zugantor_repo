@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zugantor_design_system/zugantor_design_system.dart';
 
-/// Use-cases for [AppDatePicker].
+/// Use-cases for [ZDSDatePicker].
 final List<WidgetbookUseCase> datePickerStories = [
   WidgetbookUseCase(name: 'Default', builder: _default),
   WidgetbookUseCase(name: 'Disabled', builder: _disabled),
@@ -27,7 +27,7 @@ Widget _default(BuildContext context) {
 Widget _disabled(BuildContext context) {
   return SizedBox(
     width: 320,
-    child: AppDatePicker(
+    child: ZDSDatePicker(
       selectedDate: DateTime(1990, 6, 15),
       onDateSelected: (_) {},
       label: 'Date of birth',
@@ -55,7 +55,7 @@ class _DatePickerDemoState extends State<_DatePickerDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return AppDatePicker(
+    return ZDSDatePicker(
       selectedDate: _selectedDate,
       onDateSelected: (date) => setState(() => _selectedDate = date),
       label: widget.label,

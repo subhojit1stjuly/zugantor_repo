@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zugantor_design_system/zugantor_design_system.dart';
 
-/// Use-cases for [Section].
+/// Use-cases for [ZDSSection].
 final List<WidgetbookUseCase> sectionStories = [
   WidgetbookUseCase(name: 'Default', builder: _default),
   WidgetbookUseCase(name: 'With Actions', builder: _withActions),
@@ -24,12 +24,12 @@ Widget _default(BuildContext context) {
 
   return Padding(
     padding: const EdgeInsets.all(16),
-    child: Section(
+    child: ZDSSection(
       title: title,
       subtitle: subtitle,
       showDivider: showDivider,
       child: Text(
-        'Section body content appears here. It can be any widget.',
+        'ZDSSection body content appears here. It can be any widget.',
         style: ZDSTheme.of(context).typography.bodyMedium,
       ),
     ),
@@ -39,7 +39,7 @@ Widget _default(BuildContext context) {
 Widget _withActions(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(16),
-    child: Section(
+    child: ZDSSection(
       title: 'Members',
       subtitle: '3 active members',
       showDivider: true,

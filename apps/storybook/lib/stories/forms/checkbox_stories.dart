@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zugantor_design_system/zugantor_design_system.dart';
 
-/// Use-cases for [AppCheckbox].
+/// Use-cases for [ZDSCheckbox].
 final List<WidgetbookUseCase> checkboxStories = [
   WidgetbookUseCase(name: 'Default', builder: _default),
   WidgetbookUseCase(name: 'Group', builder: _group),
@@ -49,7 +49,7 @@ class _CheckboxDemoState extends State<_CheckboxDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return AppCheckbox(
+    return ZDSCheckbox(
       value: _value,
       onChanged: widget.enabled
           ? (v) => setState(() => _value = v ?? false)

@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zugantor_design_system/zugantor_design_system.dart';
 
-/// Use-cases for [AppSwitch].
+/// Use-cases for [ZDSSwitch].
 final List<WidgetbookUseCase> switchStories = [
   WidgetbookUseCase(name: 'Default', builder: _default),
   WidgetbookUseCase(name: 'Group', builder: _group),
@@ -49,7 +49,7 @@ class _SwitchDemoState extends State<_SwitchDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return AppSwitch(
+    return ZDSSwitch(
       value: _value,
       onChanged: widget.enabled ? (v) => setState(() => _value = v) : null,
       label: widget.label,

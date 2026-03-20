@@ -1,19 +1,19 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zugantor_design_system/zugantor_design_system.dart';
 
-/// Use-cases for [AppDropdown].
+/// Use-cases for [ZDSDropdown].
 final List<WidgetbookUseCase> dropdownStories = [
   WidgetbookUseCase(name: 'Countries', builder: _countries),
   WidgetbookUseCase(name: 'Disabled', builder: _disabled),
 ];
 
 const _countryItems = [
-  AppDropdownItem(value: 'us', label: 'United States'),
-  AppDropdownItem(value: 'uk', label: 'United Kingdom'),
-  AppDropdownItem(value: 'ca', label: 'Canada'),
-  AppDropdownItem(value: 'au', label: 'Australia'),
-  AppDropdownItem(value: 'de', label: 'Germany'),
+  ZDSDropdownItem(value: 'us', label: 'United States'),
+  ZDSDropdownItem(value: 'uk', label: 'United Kingdom'),
+  ZDSDropdownItem(value: 'ca', label: 'Canada'),
+  ZDSDropdownItem(value: 'au', label: 'Australia'),
+  ZDSDropdownItem(value: 'de', label: 'Germany'),
 ];
 
 Widget _countries(BuildContext context) {
@@ -32,7 +32,7 @@ Widget _countries(BuildContext context) {
 Widget _disabled(BuildContext context) {
   return const SizedBox(
     width: 320,
-    child: AppDropdown<String>(
+    child: ZDSDropdown<String>(
       value: 'us',
       label: 'Country',
       hint: 'Select a country...',
@@ -61,7 +61,7 @@ class _DropdownDemoState extends State<_DropdownDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return AppDropdown<String>(
+    return ZDSDropdown<String>(
       value: _value,
       label: widget.label,
       hint: widget.hint,
