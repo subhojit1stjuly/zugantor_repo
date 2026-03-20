@@ -1,22 +1,22 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../theme/custom_theme.dart';
 
 /// Validation state for text input fields.
-enum TextInputState { normal, success, warning, error }
+enum ZDSTextInputState { normal, success, warning, error }
 
 /// A theme-aware text input component for the ZDS design system.
 ///
 /// This input field supports different validation states and provides
 /// consistent styling across the application.
-class AppTextInput extends StatelessWidget {
+class ZDSTextInput extends StatelessWidget {
   /// Creates a text input field.
-  const AppTextInput({
+  const ZDSTextInput({
     super.key,
     required this.label,
     this.hint,
     this.helperText,
     this.errorText,
-    this.state = TextInputState.normal,
+    this.state = ZDSTextInputState.normal,
     this.onChanged,
     this.controller,
     this.enabled = true,
@@ -39,7 +39,7 @@ class AppTextInput extends StatelessWidget {
   final String? errorText;
 
   /// The validation state of the input field.
-  final TextInputState state;
+  final ZDSTextInputState state;
 
   /// Callback when the text changes.
   final ValueChanged<String>? onChanged;
@@ -71,20 +71,20 @@ class AppTextInput extends StatelessWidget {
     String? displayErrorText;
 
     switch (state) {
-      case TextInputState.success:
+      case ZDSTextInputState.success:
         borderColor = theme.colors.success;
         focusColor = theme.colors.success;
         break;
-      case TextInputState.warning:
+      case ZDSTextInputState.warning:
         borderColor = theme.colors.warning;
         focusColor = theme.colors.warning;
         break;
-      case TextInputState.error:
+      case ZDSTextInputState.error:
         borderColor = theme.colors.error;
         focusColor = theme.colors.error;
         displayErrorText = errorText;
         break;
-      case TextInputState.normal:
+      case ZDSTextInputState.normal:
         borderColor = theme.colors.border;
         focusColor = theme.colors.primary;
         break;

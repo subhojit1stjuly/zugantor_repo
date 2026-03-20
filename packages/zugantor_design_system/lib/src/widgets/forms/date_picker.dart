@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../theme/custom_theme.dart';
 
 /// A theme-aware date picker component for the ZDS design system.
 ///
 /// This component provides a text field with a date picker dialog.
-class AppDatePicker extends StatelessWidget {
+class ZDSDatePicker extends StatelessWidget {
   /// Creates a date picker.
-  const AppDatePicker({
+  const ZDSDatePicker({
     super.key,
     required this.selectedDate,
     required this.onDateSelected,

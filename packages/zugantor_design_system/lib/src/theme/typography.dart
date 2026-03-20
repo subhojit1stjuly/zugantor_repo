@@ -52,28 +52,69 @@ class ZDSTypography {
   }
 
   /// A default text theme using Google Fonts.
+  ///
+  /// **Raleway** is used for display and headline styles — geometric and
+  /// elegant, it creates strong visual hierarchy at large sizes.
+  ///
+  /// **Lato** is used for all body, UI titles, and label styles — warm,
+  /// humanist, and highly legible at small sizes on both screen and print.
   static TextTheme get defaultTextTheme {
     return TextTheme(
-      headlineLarge:
-          GoogleFonts.oswald(fontSize: 57, fontWeight: FontWeight.w400),
-      headlineMedium:
-          GoogleFonts.oswald(fontSize: 45, fontWeight: FontWeight.w400),
-      headlineSmall:
-          GoogleFonts.oswald(fontSize: 36, fontWeight: FontWeight.w400),
-      titleLarge: GoogleFonts.roboto(fontSize: 22, fontWeight: FontWeight.w500),
-      titleMedium:
-          GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w500),
-      titleSmall: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500),
-      bodyLarge:
-          GoogleFonts.openSans(fontSize: 16, fontWeight: FontWeight.w400),
-      bodyMedium:
-          GoogleFonts.openSans(fontSize: 14, fontWeight: FontWeight.w400),
-      bodySmall:
-          GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.w400),
-      labelLarge: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500),
-      labelMedium:
-          GoogleFonts.roboto(fontSize: 12, fontWeight: FontWeight.w500),
-      labelSmall: GoogleFonts.roboto(fontSize: 11, fontWeight: FontWeight.w500),
+      headlineLarge: GoogleFonts.raleway(
+        fontSize: 57,
+        fontWeight: FontWeight.w300,
+        letterSpacing: -0.25,
+      ),
+      headlineMedium: GoogleFonts.raleway(
+        fontSize: 45,
+        fontWeight: FontWeight.w300,
+      ),
+      headlineSmall: GoogleFonts.raleway(
+        fontSize: 36,
+        fontWeight: FontWeight.w400,
+      ),
+      titleLarge: GoogleFonts.raleway(
+        fontSize: 28,
+        fontWeight: FontWeight.w600,
+      ),
+      titleMedium: GoogleFonts.lato(
+        fontSize: 22,
+        fontWeight: FontWeight.w700,
+      ),
+      titleSmall: GoogleFonts.lato(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+      ),
+      bodyLarge: GoogleFonts.lato(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+      ),
+      bodyMedium: GoogleFonts.lato(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+      ),
+      bodySmall: GoogleFonts.lato(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        height: 1.4,
+      ),
+      labelLarge: GoogleFonts.lato(
+        fontSize: 14,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 0.1,
+      ),
+      labelMedium: GoogleFonts.lato(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.5,
+      ),
+      labelSmall: GoogleFonts.lato(
+        fontSize: 11,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.5,
+      ),
     );
   }
 }

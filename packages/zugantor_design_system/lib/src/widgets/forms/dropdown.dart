@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../theme/custom_theme.dart';
 
 /// A theme-aware dropdown component for the ZDS design system.
 ///
 /// This dropdown provides consistent styling and behavior across the application.
-class AppDropdown<T> extends StatelessWidget {
+class ZDSDropdown<T> extends StatelessWidget {
   /// Creates a dropdown.
-  const AppDropdown({
+  const ZDSDropdown({
     super.key,
     required this.value,
     required this.items,
@@ -20,7 +20,7 @@ class AppDropdown<T> extends StatelessWidget {
   final T? value;
 
   /// The list of items to display in the dropdown.
-  final List<AppDropdownItem<T>> items;
+  final List<ZDSDropdownItem<T>> items;
 
   /// Callback when the selection changes.
   final ValueChanged<T?>? onChanged;
@@ -95,9 +95,9 @@ class AppDropdown<T> extends StatelessWidget {
 }
 
 /// A single item in a dropdown.
-class AppDropdownItem<T> {
+class ZDSDropdownItem<T> {
   /// Creates a dropdown item.
-  const AppDropdownItem({
+  const ZDSDropdownItem({
     required this.value,
     required this.label,
   });

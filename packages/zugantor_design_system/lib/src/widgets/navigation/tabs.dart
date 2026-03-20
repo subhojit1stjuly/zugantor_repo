@@ -43,7 +43,7 @@ class ZDSTabItem {
 /// ```
 class ZDSTabs extends StatefulWidget {
   /// Creates a tabs widget.
-  const ZDSTabs({
+  ZDSTabs({
     super.key,
     required this.tabs,
     this.initialIndex = 0,
@@ -189,8 +189,7 @@ class _TabButton extends StatelessWidget {
                       : theme.typography.bodyMedium)
                   ?.copyWith(
                 color: effectiveColor,
-                fontWeight:
-                    isSelected ? FontWeight.w600 : FontWeight.normal,
+                fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
               ),
             ),
           ],

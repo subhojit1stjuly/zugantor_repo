@@ -1,36 +1,36 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../theme/custom_theme.dart';
 
-/// The severity variant for an [Alert].
+/// The severity variant for an [ZDSAlert].
 ///
-/// Maps to standard component.gallery alert/banner patterns:
+/// Maps to standard component.gallery ZDSAlert/banner patterns:
 /// - [info]: Neutral informational message.
 /// - [success]: Confirmation that an action succeeded.
 /// - [warning]: A cautionary message requiring attention.
 /// - [error]: A critical problem that must be resolved.
-enum AlertVariant { info, success, warning, error }
+enum ZDSAlertVariant { info, success, warning, error }
 
-/// A theme-aware alert component for the ZDS design system.
+/// A theme-aware ZDSAlert component for the ZDS design system.
 ///
 /// Alerts display short, important messages to the user, corresponding to
-/// the **Alert / Banner** component pattern documented at
-/// [component.gallery](https://component.gallery/components/alert/).
+/// the **ZDSAlert / Banner** component pattern documented at
+/// [component.gallery](https://component.gallery/components/ZDSAlert/).
 ///
 /// At least one of [title] or [message] must be provided.
 ///
 /// Example:
 /// ```dart
-/// Alert(
-///   variant: AlertVariant.success,
+/// ZDSAlert(
+///   variant: ZDSAlertVariant.success,
 ///   title: 'Profile saved',
 ///   message: 'Your changes have been saved successfully.',
 /// )
 /// ```
-class Alert extends StatelessWidget {
-  /// Creates an alert.
+class ZDSAlert extends StatelessWidget {
+  /// Creates an ZDSAlert.
   ///
   /// At least one of [title] or [message] must be non-null.
-  const Alert({
+  const ZDSAlert({
     super.key,
     required this.variant,
     this.title,
@@ -39,91 +39,91 @@ class Alert extends StatelessWidget {
     this.icon,
   }) : assert(
           title != null || message != null,
-          'Alert must have a title or a message.',
+          'ZDSAlert must have a title or a message.',
         );
 
-  /// Creates an informational alert.
+  /// Creates an informational ZDSAlert.
   ///
   /// At least one of [title] or [message] must be non-null.
-  const Alert.info({
+  const ZDSAlert.info({
     super.key,
     String? title,
     String? message,
     VoidCallback? onClose,
   })  : assert(
           title != null || message != null,
-          'Alert.info must have a title or a message.',
+          'ZDSAlert.info must have a title or a message.',
         ),
-        variant = AlertVariant.info,
+        variant = ZDSAlertVariant.info,
         title = title,
         message = message,
         onClose = onClose,
         icon = null;
 
-  /// Creates a success alert.
+  /// Creates a success ZDSAlert.
   ///
   /// At least one of [title] or [message] must be non-null.
-  const Alert.success({
+  const ZDSAlert.success({
     super.key,
     String? title,
     String? message,
     VoidCallback? onClose,
   })  : assert(
           title != null || message != null,
-          'Alert.success must have a title or a message.',
+          'ZDSAlert.success must have a title or a message.',
         ),
-        variant = AlertVariant.success,
+        variant = ZDSAlertVariant.success,
         title = title,
         message = message,
         onClose = onClose,
         icon = null;
 
-  /// Creates a warning alert.
+  /// Creates a warning ZDSAlert.
   ///
   /// At least one of [title] or [message] must be non-null.
-  const Alert.warning({
+  const ZDSAlert.warning({
     super.key,
     String? title,
     String? message,
     VoidCallback? onClose,
   })  : assert(
           title != null || message != null,
-          'Alert.warning must have a title or a message.',
+          'ZDSAlert.warning must have a title or a message.',
         ),
-        variant = AlertVariant.warning,
+        variant = ZDSAlertVariant.warning,
         title = title,
         message = message,
         onClose = onClose,
         icon = null;
 
-  /// Creates an error alert.
+  /// Creates an error ZDSAlert.
   ///
   /// At least one of [title] or [message] must be non-null.
-  const Alert.error({
+  const ZDSAlert.error({
     super.key,
     String? title,
     String? message,
     VoidCallback? onClose,
   })  : assert(
           title != null || message != null,
-          'Alert.error must have a title or a message.',
+          'ZDSAlert.error must have a title or a message.',
         ),
-        variant = AlertVariant.error,
+        variant = ZDSAlertVariant.error,
         title = title,
         message = message,
         onClose = onClose,
         icon = null;
 
-  /// The severity variant of the alert.
-  final AlertVariant variant;
+  /// The severity variant of the ZDSAlert.
+  final ZDSAlertVariant variant;
 
-  /// Optional bold title for the alert.
+  /// Optional bold title for the ZDSAlert.
   final String? title;
 
   /// Optional descriptive message body.
   final String? message;
 
-  /// Optional callback to dismiss the alert. Renders a close button when set.
+  /// Optional callback to dismiss the ZDSAlert. Renders a close button when set.
   final VoidCallback? onClose;
 
   /// Optional override icon. Defaults to an icon matching the [variant].
@@ -190,7 +190,7 @@ class Alert extends StatelessWidget {
 
   _AlertColors _resolveColors(ZDSTheme theme) {
     switch (variant) {
-      case AlertVariant.info:
+      case ZDSAlertVariant.info:
         return _AlertColors(
           background: theme.colors.info?.withOpacity(0.1) ??
               const Color(0xFFE3F2FD),
@@ -198,7 +198,7 @@ class Alert extends StatelessWidget {
           foreground: theme.colors.info ?? const Color(0xFF0288D1),
           defaultIcon: Icons.info_outline,
         );
-      case AlertVariant.success:
+      case ZDSAlertVariant.success:
         return _AlertColors(
           background: theme.colors.success?.withOpacity(0.1) ??
               const Color(0xFFE8F5E9),
@@ -206,7 +206,7 @@ class Alert extends StatelessWidget {
           foreground: theme.colors.success ?? const Color(0xFF388E3C),
           defaultIcon: Icons.check_circle_outline,
         );
-      case AlertVariant.warning:
+      case ZDSAlertVariant.warning:
         return _AlertColors(
           background: theme.colors.warning?.withOpacity(0.1) ??
               const Color(0xFFFFF3E0),
@@ -214,7 +214,7 @@ class Alert extends StatelessWidget {
           foreground: theme.colors.warning ?? const Color(0xFFF57C00),
           defaultIcon: Icons.warning_amber_outlined,
         );
-      case AlertVariant.error:
+      case ZDSAlertVariant.error:
         return _AlertColors(
           background: theme.colors.error?.withOpacity(0.1) ??
               const Color(0xFFFFEBEE),

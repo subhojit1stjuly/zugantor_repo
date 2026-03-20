@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../theme/custom_theme.dart';
 
-/// A single item in an [Accordion].
-class AccordionItem {
-  /// Creates an accordion item.
-  const AccordionItem({
+/// A single item in an [ZDSAccordion].
+class ZDSAccordionItem {
+  /// Creates an ZDSAccordion item.
+  const ZDSAccordionItem({
     required this.title,
     required this.content,
     this.subtitle,
     this.initiallyExpanded = false,
   });
 
-  /// The header title of the accordion panel.
+  /// The header title of the ZDSAccordion panel.
   final String title;
 
   /// The widget displayed when the panel is expanded.
@@ -24,54 +24,53 @@ class AccordionItem {
   final bool initiallyExpanded;
 }
 
-/// A theme-aware accordion component for the ZDS design system.
+/// A theme-aware ZDSAccordion component for the ZDS design system.
 ///
-/// An accordion is a vertically stacked set of expandable/collapsible panels.
-/// It follows the **Accordion** component pattern documented at
-/// [component.gallery](https://component.gallery/components/accordion/).
+/// An ZDSAccordion is a vertically stacked set of expandable/collapsible panels.
+/// It follows the **ZDSAccordion** component pattern documented at
+/// [component.gallery](https://component.gallery/components/ZDSAccordion/).
 ///
 /// Example:
 /// ```dart
-/// Accordion(
+/// ZDSAccordion(
 ///   items: [
-///     AccordionItem(
+///     ZDSAccordionItem(
 ///       title: 'What is a design system?',
 ///       content: Text('A design system is a collection of reusable components...'),
 ///     ),
-///     AccordionItem(
+///     ZDSAccordionItem(
 ///       title: 'How do I contribute?',
 ///       content: Text('Open a pull request on GitHub...'),
 ///     ),
 ///   ],
 /// )
 /// ```
-class Accordion extends StatefulWidget {
-  /// Creates an accordion.
-  const Accordion({
+class ZDSAccordion extends StatefulWidget {
+  /// Creates an ZDSAccordion.
+  ZDSAccordion({
     super.key,
     required this.items,
     this.allowMultiple = false,
-  }) : assert(items.isNotEmpty, 'Accordion requires at least one item.');
+  }) : assert(items.isNotEmpty, 'ZDSAccordion requires at least one item.');
 
-  /// The list of accordion panels to display.
-  final List<AccordionItem> items;
+  /// The list of ZDSAccordion panels to display.
+  final List<ZDSAccordionItem> items;
 
   /// When [allowMultiple] is false (the default), expanding one panel will
   /// collapse all others. When true, multiple panels can be open at once.
   final bool allowMultiple;
 
   @override
-  State<Accordion> createState() => _AccordionState();
+  State<ZDSAccordion> createState() => _AccordionState();
 }
 
-class _AccordionState extends State<Accordion> {
+class _AccordionState extends State<ZDSAccordion> {
   late List<bool> _expanded;
 
   @override
   void initState() {
     super.initState();
-    _expanded =
-        widget.items.map((item) => item.initiallyExpanded).toList();
+    _expanded = widget.items.map((item) => item.initiallyExpanded).toList();
   }
 
   void _toggle(int index) {
@@ -114,7 +113,7 @@ class _AccordionPanel extends StatelessWidget {
     required this.theme,
   });
 
-  final AccordionItem item;
+  final ZDSAccordionItem item;
   final bool isExpanded;
   final VoidCallback onToggle;
   final bool isLast;
@@ -161,8 +160,8 @@ class _AccordionPanel extends StatelessWidget {
                           Text(
                             item.subtitle!,
                             style: theme.typography.bodySmall?.copyWith(
-                              color:
-                                  theme.colors.onSurface?.withOpacity(0.6),
+                              color: theme.colors.onSurface
+                                  ?.withValues(alpha: 0.6),
                             ),
                           ),
                         ],

@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../theme/custom_theme.dart';
 
 /// A widget for grouping related content with consistent styling.
 ///
 /// Sections are used to organize content hierarchically and provide
 /// visual separation between different areas of the UI.
-class Section extends StatelessWidget {
-  /// Creates a section.
-  const Section({
+class ZDSSection extends StatelessWidget {
+  /// Creates a ZDSSection.
+  const ZDSSection({
     super.key,
     this.title,
     this.subtitle,
@@ -17,19 +17,19 @@ class Section extends StatelessWidget {
     this.actions,
   });
 
-  /// Optional title for the section.
+  /// Optional title for the ZDSSection.
   final String? title;
 
-  /// Optional subtitle or description for the section.
+  /// Optional subtitle or description for the ZDSSection.
   final String? subtitle;
 
-  /// The content of the section.
+  /// The content of the ZDSSection.
   final Widget child;
 
-  /// Optional padding around the section. Defaults to medium padding.
+  /// Optional padding around the ZDSSection. Defaults to medium padding.
   final EdgeInsetsGeometry? padding;
 
-  /// Whether to show a divider at the bottom of the section.
+  /// Whether to show a divider at the bottom of the ZDSSection.
   final bool showDivider;
 
   /// Optional action widgets displayed in the header (e.g., buttons, icons).
@@ -114,9 +114,9 @@ class Section extends StatelessWidget {
 ///
 /// This widget makes it easy to build scrollable lists of sections
 /// with proper spacing between them.
-class SectionList extends StatelessWidget {
-  /// Creates a section list.
-  const SectionList({
+class ZDSSectionList extends StatelessWidget {
+  /// Creates a ZDSSection list.
+  const ZDSSectionList({
     super.key,
     required this.sections,
     this.spacing,

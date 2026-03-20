@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../theme/custom_theme.dart';
 
 /// A theme-aware checkbox component for the ZDS design system.
 ///
 /// This checkbox provides consistent styling and behavior across the application.
-class AppCheckbox extends StatelessWidget {
+class ZDSCheckbox extends StatelessWidget {
   /// Creates a checkbox.
-  const AppCheckbox({
+  const ZDSCheckbox({
     super.key,
     required this.value,
     required this.onChanged,
