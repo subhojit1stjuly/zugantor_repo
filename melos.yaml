@@ -7,7 +7,7 @@ packages:
 
 command:
   bootstrap:
-    usePubspecOverrides: true
+    runPubGetInParallel: true
   version:
     linkToCommits: true
     branch: main
