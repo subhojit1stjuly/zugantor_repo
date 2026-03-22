@@ -58,6 +58,23 @@ SduiRenderer(template: layoutMap, data: apiResponseMap) → Widget
 
 ---
 
+### Backend Requirements
+
+These documents are written for the backend architect. They describe what the frontend does and what it needs — without prescribing how the backend should implement anything.
+
+| Document | Description |
+|---|---|
+| [Overview](backend/README.md) | Index and key vocabulary — read this first |
+| [Frontend Overview](backend/frontend_overview.md) | What the frontend is, how SDUI works, package structure |
+| [Layout Templates](backend/layout_templates.md) | Template format, every field, component props reference, full example |
+| [Data Requirements](backend/data_requirements.md) | Data map shape, bind contracts per screen, formatting responsibilities |
+| [Sync Requirements](backend/sync_requirements.md) | How the frontend keeps templates current without app updates |
+| [A/B Testing Requirements](backend/ab_testing_requirements.md) | Context the frontend sends, metadata it reads, analytics events it fires |
+| [Localization Requirements](backend/localization_requirements.md) | Locale context sent, string formatting expectations, RTL support |
+| [Security Requirements](backend/security_requirements.md) | Frontend defenses, what the backend must provide, open security questions |
+
+---
+
 ## Related Files
 
 - [PROJECT_GOALS.md](../PROJECT_GOALS.md) — Design system goals and principles
