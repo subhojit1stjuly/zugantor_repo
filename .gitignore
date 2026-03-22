@@ -96,3 +96,10 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+apps/storybook/linux/flutter/generated_plugin_registrant.cc
+apps/storybook/linux/flutter/generated_plugin_registrant.cc
+apps/storybook/linux/flutter/generated_plugin_registrant.cc
+apps/storybook/linux/flutter/generated_plugins.cmake
+apps/storybook/macos/Flutter/GeneratedPluginRegistrant.swift
+apps/storybook/windows/flutter/generated_plugin_registrant.cc
+apps/storybook/windows/flutter/generated_plugins.cmake
